@@ -1,3 +1,7 @@
+// https://peterhpchen.github.io/2020/03/08/goroutine-and-channel.html
+// https://ithelp.ithome.com.tw/articles/10212068
+// https://www.jishuwen.com/d/2SFS/zh-tw
+
 package main
 
 import (
