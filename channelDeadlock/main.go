@@ -1,16 +1,15 @@
 // https://peterhpchen.github.io/2020/03/08/goroutine-and-channel.html
 // https://ithelp.ithome.com.tw/articles/10212068
 // https://www.jishuwen.com/d/2SFS/zh-tw
+// https://liushuchun.gitbooks.io/golang/content/go_concurence.html
 
 package main
 
 import (
 	"fmt"
+	"sync"
+	"time"
 )
-
-func main() {
-	example5()
-}
 
 // channel is deadlock
 func example1() {
@@ -78,6 +77,71 @@ func example6() {
 
 	// 解決方式2：開啟子協程，主協程sleep等待
 	// time.Sleep(1e9)
+}
+
+type SafeNumber struct {
+	v   int
+	mux sync.Mutex
+}
+
+func example7() {
+	total := SafeNumber{
+		v: 0,
+	}
+	for i := 0; i < 5; i++ {
+		go func() {
+			total.mux.Lock()
+			total.v++
+			total.mux.Unlock()
+		}()
+	}
+	time.Sleep(time.Second)
+	total.mux.Lock()
+	fmt.Println(total.v)
+	total.mux.Unlock()
+}
+
+func example8() {
+	ch := make(chan int, 1)
+	ch <- 0
+	for i := 0; i < 1000; i++ {
+		go func() {
+			ch <- <-ch + 1
+		}()
+		//fmt.Println(1)
+	}
+
+	fmt.Println(<-ch)
+}
+
+func say(s string, c chan string) {
+	for i := 0; i < 5; i++ {
+		fmt.Println(i + 1)
+	}
+	c <- "FINISH"
+}
+
+func example9() {
+	ch := make(chan string)
+
+	go say("world", ch)
+	go say("hello", ch)
+	go say("Justin", ch)
+	go say("Stacy", ch)
+	go say("Gill", ch)
+
+	fmt.Println(len(ch), "123")
+	fmt.Println(<-ch)
+	fmt.Println(<-ch)
+	fmt.Println(len(ch), "456")
+	fmt.Println(<-ch)
+	fmt.Println(<-ch)
+	fmt.Println(<-ch)
+	fmt.Println(len(ch), "789")
+}
+
+func main() {
+	example8()
 }
 
 // 1.日常在使用 channel 中，要注意區分有緩衝( buffered channel ，
