@@ -97,8 +97,7 @@ func WithBranch(n int64) int64 {
 	return n
 }
 
-// https://golang.org/src/hash/fnv/fnv.go
-// https://www.timiguo.com/archives/176/
+// http://www.isthe.com/chongo/tech/comp/fnv/
 func fnv32(key string) uint32 {
 	hash := uint32(2166136261)
 	const prime32 = uint32(16777619)
