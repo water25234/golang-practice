@@ -7,20 +7,22 @@ import (
 )
 
 func main() {
+
+	execStringByID()
+
 	// fmt.Println(GetCheckIDs("8TtAq4imIgLOaJGQZEbpmbEtTRLG14"))
 	// fmt.Println(GetCheckIDs("NLZR2KgcRyqfxj8n9Zj77nl8uGlrLN"))
-	fmt.Println(GetCheckIDs("water25234@gmail.com"))
-	fmt.Println(GetCheckIDs("justin.huang@kkday.com"))
-	fmt.Println(GetCheckIDs("justin.huang@newtype.games"))
-	fmt.Println(GetCheckIDs("wei.shun.huang771210@hotmail.games"))
-	fmt.Println(GetCheckIDs("wei.shun.huang771210@hotmail.gamesjustin.huang@newtype.games"))
-	fmt.Println(GetCheckIDs("A"))
-	fmt.Println(GetCheckIDs("AB"))
-	fmt.Println(GetCheckIDs("ABC"))
-	fmt.Println(GetCheckIDs("ABCD"))
-	fmt.Println(GetCheckIDs("ABCDE"))
-	fmt.Println(GetCheckIDs("test@qq.com"))
-	// execStringByID()
+	// fmt.Println(GetCheckIDs("water25234@gmail.com"))
+	// fmt.Println(GetCheckIDs("justin.huang@kkday.com"))
+	// fmt.Println(GetCheckIDs("justin.huang@newtype.games"))
+	// fmt.Println(GetCheckIDs("wei.shun.huang771210@hotmail.games"))
+	// fmt.Println(GetCheckIDs("wei.shun.huang771210@hotmail.gamesjustin.huang@newtype.games"))
+	// fmt.Println(GetCheckIDs("A"))
+	// fmt.Println(GetCheckIDs("AB"))
+	// fmt.Println(GetCheckIDs("ABC"))
+	// fmt.Println(GetCheckIDs("ABCD"))
+	// fmt.Println(GetCheckIDs("ABCDE"))
+	// fmt.Println(GetCheckIDs("test@qq.com"))
 }
 
 func execStringByID() {
@@ -44,28 +46,26 @@ func GetCheckIDs(text string) int64 {
 
 	for i := 0; i < len(text); i++ {
 
-		sum = ((16 * sum) ^ int64(text[i])) //- Field_mapping[string(text[i])]
+		sum = ((16 * sum) ^ int64(text[i]))
 
-		//overflow := sum / 4294967296
+		overflow := sum / 4294967296
 
-		//sum = sum - overflow*4294967296
+		sum = sum - overflow*4294967296
 
-		//sum = sum ^ overflow
-
-		// sum = sum ^ Field_mapping[string(text[i])]
+		sum = sum ^ overflow
 	}
 
-	//fmt.Println(sum)
+	fmt.Println(sum)
 
-	// if sum > 2147483647 {
-	// 	sum = sum - 4294967296
-	// } else if sum >= 32768 && sum <= 65535 {
-	// 	sum = sum - 65536
-	// } else if sum >= 128 && sum <= 255 {
-	// 	sum = sum - 256
-	// }
+	if sum > 2147483647 {
+		sum = sum - 4294967296
+	} else if sum >= 32768 && sum <= 65535 {
+		sum = sum - 65536
+	} else if sum >= 128 && sum <= 255 {
+		sum = sum - 256
+	}
 
-	//fmt.Println(sum)
+	fmt.Println(sum)
 
 	return WithBranch(sum)
 }
