@@ -9,17 +9,12 @@ import (
 func main() {
 
 	// execStringByID()
-	execStringByID_fnv32()
 
-	// fmt.Println(GetCheckIDs("8TtAq4imIgLOaJGQZEbpmbEtTRLG14"))
-	// fmt.Println(GetCheckIDs("NLZR2KgcRyqfxj8n9Zj77nl8uGlrLN"))
-	// fmt.Println(GetCheckIDs("water25234@gmail.com"))
-	// fmt.Println(GetCheckIDs("A"))
-	// fmt.Println(GetCheckIDs("AB"))
-	// fmt.Println(GetCheckIDs("ABC"))
-	// fmt.Println(GetCheckIDs("ABCD"))
-	// fmt.Println(GetCheckIDs("ABCDE"))
-	// fmt.Println(GetCheckIDs("test@qq.com"))
+	// execStringByID_fnv32()
+
+	// execStringByID_fnv64()
+
+	fmt.Println(fnv64("water25234@gmail.com"))
 }
 
 func execStringByID() {
@@ -43,6 +38,20 @@ func execStringByID_fnv32() {
 	for i := 0; i < 100000; i++ {
 		str := String(20)
 		CheckIDs := fnv32(str)
+		if _, ok := arr[CheckIDs]; ok {
+			if arr[CheckIDs] != str {
+				fmt.Println(CheckIDs, arr[CheckIDs], str)
+			}
+		}
+		arr[CheckIDs] = str
+	}
+}
+
+func execStringByID_fnv64() {
+	arr := make(map[uint64]string)
+	for i := 0; i < 1000000; i++ {
+		str := String(20)
+		CheckIDs := fnv64(str)
 		if _, ok := arr[CheckIDs]; ok {
 			if arr[CheckIDs] != str {
 				fmt.Println(CheckIDs, arr[CheckIDs], str)
@@ -96,6 +105,16 @@ func fnv32(key string) uint32 {
 	for i := 0; i < len(key); i++ {
 		hash *= prime32
 		hash ^= uint32(key[i])
+	}
+	return hash
+}
+
+func fnv64(key string) uint64 {
+	hash := uint64(14695981039346656037)
+	const prime32 = uint64(1099511628211)
+	for i := 0; i < len(key); i++ {
+		hash *= prime32
+		hash ^= uint64(key[i])
 	}
 	return hash
 }
