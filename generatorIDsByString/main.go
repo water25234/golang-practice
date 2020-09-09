@@ -6,7 +6,7 @@ import (
 	"math/rand"
 	"time"
 
-	// https://github.com/bingoohuang/blog/issues/143 比較表
+	// https://github.com/bingoohuang/blog/issues/143 compare
 	"github.com/cespare/xxhash"
 	"github.com/dgryski/go-farm"
 	"github.com/spaolacci/murmur3"
@@ -20,7 +20,7 @@ func main() {
 	farm64 := farm.Hash64([]byte("water25234@gmail.com"))
 	fmt.Println("farm 64: ", farm64)
 
-	// lnfluxDB use this xxhash package
+	//prometheus & lnfluxDB use this xxhash package
 	xxhash := xxhash.Sum64([]byte("water25234@gmail.com"))
 	fmt.Println("xxhash 64: ", xxhash)
 
