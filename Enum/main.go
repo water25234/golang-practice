@@ -30,6 +30,11 @@ func foo(p PolicyType) {
 	fmt.Printf("enum value: %v\n", p.String())
 }
 
+// variadic who ...string
+func demo(people string, who ...string) {
+	fmt.Println(who)
+}
 func main() {
+	demo("justin", "stacy", "gill", "lucy")
 	foo(Policy_MAX)
 }
