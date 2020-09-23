@@ -12,7 +12,7 @@ var once sync.Once
 
 func main() {
 	once.Do(onces)
-	//time.Sleep(5000)
+	// time.Sleep(5000)
 	once.Do(onced)
 }
 

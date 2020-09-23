@@ -12,12 +12,15 @@ func main() {
 		go func() {
 			singleton := GetSingleton()
 			singleton.PrintAddress()
+			singleton.Addone()
+			fmt.Println(singleton.count)
 		}()
 	}
-	time.Sleep(time.Second)
+	time.Sleep(time.Second * 2)
 }
 
 type singleton struct {
+	count int
 }
 
 var st *singleton
@@ -36,4 +39,9 @@ func GetSingleton() *singleton {
 
 func (s *singleton) PrintAddress() {
 	fmt.Printf("%p \n", s)
+}
+
+func (s *singleton) Addone() int {
+	s.count++
+	return s.count
 }
