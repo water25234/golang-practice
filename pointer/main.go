@@ -13,6 +13,12 @@ func main() {
 	UserInfoPointer(user)
 	fmt.Println("----------")
 	UserInfo(*user)
+
+	// &{123456789 Justin 177 67}
+	// &{123456789 Justin 177 72}
+	// ----------
+	// {123456789 Justin 177 72}
+	// {123456789 Justin 177 72}
 }
 
 type User struct {
