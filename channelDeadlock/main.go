@@ -11,6 +11,15 @@ import (
 	"time"
 )
 
+// 1.日常在使用 channel 中，要注意區分有緩衝( buffered channel ，
+// 	非同步佇列-FIFO處理)與無緩衝( unbuffered channel ，同步流入流出)通道的區別，掌握各自適合使用的方式；
+// 2. 出現 deadlock 一定是執行緒/協程之間存在了資源競爭，互相佔用對方需要的資源導致程式永遠不能退出，需要小心可能遇到的坑，
+// 	也可以通過加鎖避免。
+
+func main() {
+	example1()
+}
+
 // channel is deadlock
 func example1() {
 	ch := make(chan int)
@@ -139,12 +148,3 @@ func example9() {
 	fmt.Println(<-ch)
 	fmt.Println(len(ch), "789")
 }
-
-func main() {
-	example8()
-}
-
-// 1.日常在使用 channel 中，要注意區分有緩衝( buffered channel ，
-// 	非同步佇列-FIFO處理)與無緩衝( unbuffered channel ，同步流入流出)通道的區別，掌握各自適合使用的方式；
-// 2. 出現 deadlock 一定是執行緒/協程之間存在了資源競爭，互相佔用對方需要的資源導致程式永遠不能退出，需要小心可能遇到的坑，
-// 	也可以通過加鎖避免。
