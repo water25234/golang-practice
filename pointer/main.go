@@ -13,6 +13,15 @@ func main() {
 	UserInfoPointer(user)
 	fmt.Println("----------")
 	UserInfo(*user)
+	fmt.Println("----------")
+
+	userVersion2 := User{
+		ID:     123456789,
+		Name:   "Justin",
+		Hight:  177,
+		Weight: 67,
+	}
+	UserInfo(userVersion2)
 
 	// &{123456789 Justin 177 67}
 	// &{123456789 Justin 177 72}
