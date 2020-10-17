@@ -66,6 +66,7 @@ func example1() {
 	for index, value := range slice {
 		fmt.Printf("%d => %d\n", value, &value)
 		myMap[index] = &value
+		// myMap[index] = &slice[index]
 	}
 
 	// for i := 0; i < len(slice); i++ {
