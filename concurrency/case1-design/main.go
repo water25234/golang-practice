@@ -18,7 +18,7 @@ func main() {
 
 		//假設需要統計 request 相關數據，所以丟背景
 		//這邊使用這個非阻塞式的worker
-		err := sw.Add(r)
+		err := sw.AddRequest(r)
 		if err != nil {
 			log.Println(err)
 			return
