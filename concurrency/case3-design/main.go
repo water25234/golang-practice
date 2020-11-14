@@ -14,6 +14,28 @@ import (
 	"time"
 )
 
+func main() {
+	var (
+		maxWorkers   = flag.Int("max_workers", 5, "The number of workers to start")
+		maxQueueSize = flag.Int("max_queue_size", 100, "The size of job queue")
+		port         = flag.String("port", "8080", "The server port")
+	)
+	flag.Parse()
+
+	// Create the job queue.
+	jobQueue := make(chan Job, *maxQueueSize)
+
+	// Start the dispatcher.
+	dispatcher := NewDispatcher(jobQueue, *maxWorkers)
+	dispatcher.run()
+
+	// Start the HTTP handler.
+	http.HandleFunc("/work", func(w http.ResponseWriter, r *http.Request) {
+		requestHandler(w, r, jobQueue)
+	})
+	log.Fatal(http.ListenAndServe(":"+*port, nil))
+}
+
 // Job holds the attributes needed to perform unit of work.
 type Job struct {
 	Name  string
@@ -42,7 +64,7 @@ func (w Worker) start() {
 		for {
 			// Add my jobQueue to the worker pool.
 			w.workerPool <- w.jobQueue
-
+			fmt.Println("12345")
 			select {
 			case job := <-w.jobQueue:
 				// Dispatcher has added a job to my jobQueue.
@@ -132,32 +154,12 @@ func requestHandler(w http.ResponseWriter, r *http.Request, jobQueue chan Job) {
 		return
 	}
 
+	fmt.Println("requestHandler before")
 	// Create Job and push the work onto the jobQueue.
 	job := Job{Name: name, Delay: delay}
 	jobQueue <- job
+	fmt.Println("requestHandler after")
 
 	// Render success.
 	w.WriteHeader(http.StatusCreated)
-}
-
-func main() {
-	var (
-		maxWorkers   = flag.Int("max_workers", 5, "The number of workers to start")
-		maxQueueSize = flag.Int("max_queue_size", 100, "The size of job queue")
-		port         = flag.String("port", "8080", "The server port")
-	)
-	flag.Parse()
-
-	// Create the job queue.
-	jobQueue := make(chan Job, *maxQueueSize)
-
-	// Start the dispatcher.
-	dispatcher := NewDispatcher(jobQueue, *maxWorkers)
-	dispatcher.run()
-
-	// Start the HTTP handler.
-	http.HandleFunc("/work", func(w http.ResponseWriter, r *http.Request) {
-		requestHandler(w, r, jobQueue)
-	})
-	log.Fatal(http.ListenAndServe(":"+*port, nil))
 }
