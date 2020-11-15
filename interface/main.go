@@ -1,8 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
+import "fmt"
 
 // https://mgleon08.github.io/blog/2018/05/12/golang-interfaces/
 type People interface {
@@ -10,13 +8,18 @@ type People interface {
 	Move(string) string
 }
 
-type Student struct{}
+type Student struct {
+	Name string
+	Age  int32
+}
+
+type Teacher struct{}
 
 func (stu *Student) Speak(think string) (talk string) {
 	if think == "bitch" {
-		talk = "You are a good boy"
+		talk = stu.Name + " You are a good boy"
 	} else {
-		talk = "hi"
+		talk = stu.Name + "hi"
 	}
 	return
 }
@@ -30,10 +33,30 @@ func (stu *Student) Move(feet string) (foot string) {
 	return
 }
 
+// New mean
+func New(name string, age int32) People {
+	return &Student{
+		Name: name,
+		Age:  age,
+	}
+}
+
+// func NewVersion(name string) People {
+// 	return &Teacher{}
+// }
+
 func main() {
-	var peo People = &Student{}
+	// var peo People = &Student{}
+	// think := "bitch"
+	// feet := "right"
+	// fmt.Println(peo.Speak(think))
+	// fmt.Println(peo.Move(feet))
+
+	peo := New("Justin", 28)
+
 	think := "bitch"
 	feet := "right"
 	fmt.Println(peo.Speak(think))
 	fmt.Println(peo.Move(feet))
+
 }

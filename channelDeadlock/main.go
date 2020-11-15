@@ -17,7 +17,7 @@ import (
 // 	也可以通過加鎖避免。
 
 func main() {
-	example1()
+	example7()
 }
 
 // channel is deadlock
@@ -97,7 +97,7 @@ func example7() {
 	total := SafeNumber{
 		v: 0,
 	}
-	for i := 0; i < 5; i++ {
+	for i := 0; i < 1000; i++ {
 		go func() {
 			total.mux.Lock()
 			total.v++
