@@ -2,89 +2,67 @@ package main
 
 import (
 	"fmt"
-	// "time"
 	"sync"
+	"time"
 )
 
-type safeNumber struct {
-	total int
-	mutx  sync.Mutex
+var wg sync.WaitGroup
+var money int = 1500
+var mu sync.Mutex
+
+func calc(index string, a, realb, b int) int {
+	ret := a + b
+	// fmt.Println(index, a, b, ret)
+	fmt.Println(index, a, realb, b, ret)
+	return ret
+}
+
+func withdraw(i int) {
+	{
+		mu.Lock()
+		balance := money
+		time.Sleep(3000 * time.Millisecond)
+		balance -= 1000
+		money = balance
+		fmt.Println("After withdrawing $1000, balace: ", money, i)
+		mu.Unlock()
+	}
+
+	wg.Done()
 }
 
 func main() {
 
-	// fmt.Println(<-ch) // 被上面阻塞，無法被執行到
-	// i := 0
-	// for i = 0; i < 3; i++ {
+	fmt.Println("We have $1500")
+	wg.Add(2)
+	go withdraw(1) // first withdraw
+	go withdraw(2) // second withdraw
+	wg.Wait()
+
+	// a := 1
+	// b := 2
+	// defer calc("1", a, b, calc("10", a, b, b))
+	// a = 0
+	// defer calc("2", a, b, calc("20", a, b, b))
+	// b = 1 // not work
+
+	// runtime.GOMAXPROCS(1)
+	// wg := sync.WaitGroup{}
+	// wg.Add(20)
+
+	// for i := 0; i < 10; i++ {
+	// 	go func() {
+	// 		fmt.Println("run 1: ", i)
+	// 		wg.Done()
+	// 	}()
+	// }
+
+	// for i := 0; i < 10; i++ {
 	// 	go func(i int) {
-	// 		fmt.Println(i)
+	// 		fmt.Println("run 2: ", i)
+	// 		// wg.Done()
 	// 	}(i)
 	// }
 
-	// lock := safeNumber{
-	// 	total: 0,
-	// }
-
-	// c := make(chan bool, 1)
-
-	// // 以下code 會有什麼問題？如何改善？
-	// for i := 0; i < 3; i++ {
-	// 	go func() {
-	// 		// lock.mutx.Lock()
-	// 		fmt.Println(i)
-	// 		c <- true
-	// 		// lock.mutx.Unlock()
-	// 	}()
-	// 	<- c
-	// 	// time.Sleep(1 * time.Second)
-	// }
-	// time.Sleep(1 * time.Second)
-
-	// m := make(map[string]int)
-	// go func() {
-	// 	for {
-	// 		v1 := m["k1"]
-	// 		fmt.Println("v1: ", v1)
-	// 		time.Sleep(1 * time.Second)
-	// 	}
-	// }()
-	// go func() {
-	// 	for {
-	// 		m["k1"] = 2
-	// 		time.Sleep(100 * time.Millisecond)
-	// 	}
-	// }()
-	// for {
-	// 	time.Sleep(10 * time.Second)
-	// }
-
-	// slice := make([]int)
-
-	// defer func() {
-	// 	Done()
-	// 	fmt.Println("a")
-	// }()
-	chA := make(chan func() string, 1)
-	// chB := make(chan string, 1)
-	chA <- ToDo
-	// chB <- ToDo()
-	// fmt.Println("b")
-	// fmt.Println(<-chB)
-	fmt.Println((<-chA)())
+	// wg.Wait()
 }
-
-// func Done() {
-// 	fmt.Println("s")
-// }
-func ToDo() string {
-	defer fmt.Println("y")
-	return "t"
-}
-
-// y
-// b
-// t
-// y
-// t
-// s
-// a
