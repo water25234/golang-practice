@@ -90,6 +90,8 @@ func (w Worker) stop() {
 func NewDispatcher(jobQueue chan Job, maxWorkers int) *Dispatcher {
 	workerPool := make(chan chan Job, maxWorkers)
 
+	fmt.Println(workerPool)
+
 	return &Dispatcher{
 		jobQueue:   jobQueue,
 		maxWorkers: maxWorkers,
