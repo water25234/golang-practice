@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"unsafe"
 )
 
@@ -32,4 +33,11 @@ func StringToBytes(s string) (b []byte) {
 // BytesToString converts byte slice to string without a memory allocation.
 func BytesToString(b []byte) string {
 	return *(*string)(unsafe.Pointer(&b))
+}
+
+func main() {
+	stringToBytes := StringToBytes("hello")
+	fmt.Println(stringToBytes)
+	byteToStr := BytesToString(stringToBytes)
+	fmt.Println(byteToStr)
 }
