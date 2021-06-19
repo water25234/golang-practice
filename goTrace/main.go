@@ -10,7 +10,7 @@ import (
 func main() {
 
 	//建立trace檔案
-	f, err := os.Create("trace.out")
+	f, err := os.Create("1.text")
 	if err != nil {
 		panic(err)
 	}

@@ -1,7 +1,17 @@
 // https://ithelp.ithome.com.tw/articles/10208936
 package main
 
+import "fmt"
+
 func main() {
+
+	c := make(chan bool, 1)
+	go func() {
+		fmt.Println("GO GO GO")
+		c <- true
+	}()
+	<-c
+
 	// 	sw := &StatisticWorker{
 	// 		quene: make(chan *http.Request, 1000),
 	// 		num:   100,

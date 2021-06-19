@@ -10,7 +10,7 @@ func main() {
 	pool := &sync.Pool{
 
 		New: func() interface{} {
-			return 0
+			return 100
 		},
 	}
 
