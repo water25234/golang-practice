@@ -1,3 +1,4 @@
+// https://kkc.github.io/2020/12/14/golang-string-interning/?fbclid=IwAR361HcnTpRtAY4OQqbAKJklC2bNqBFtSlFtiwblUyXnmWf9LOSTDn13vAw
 package main
 
 import (

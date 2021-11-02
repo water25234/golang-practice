@@ -1,0 +1,443 @@
+﻿
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<title>公開資訊觀測站</title>
+<link href="css/css1.css" rel="stylesheet" type="text/css" />
+<link href="css/clickmenu.css"rel="stylesheet" type="text/css"/>
+<link href="css/print_css1.css" rel="stylesheet" type="text/css" Media="Print"/>
+
+<script type="text/javascript" src="js/mops1.js"></script>
+
+<script type="text/javascript" src="js/jquery-1.1.4.pack.js"></script>
+<script type="text/javascript" src="js/jquery.clickmenu.js"></script>
+
+</head>
+
+<body>
+<center>
+<form name='fh' style='margin:0;' action='/mops/web/ajax_autoComplete' method='post' onsubmit='return false;'><input type='hidden' name='firstin' id='firstin' value = '1'><input type='hidden' name='TYPEK' id='TYPEK' value = 'all'><input type='hidden' name='step' id='step' value = '1'><input type='hidden' name='co_id' value = ''><input type='hidden' name = 'funcName' value = 'index'><input type='hidden' name='searchtype' id='searchtype' value = ''><input type='hidden' name='inpuType' id='inpuType' value = 'keyword'><input type='hidden' name='auto-more' id='auto-more' value = ''><input type = 'hidden' name = 'keycon' value = ''><div id='head'><div id='head_02'><a href='/mops/web/index' alt='回首頁'><img src='images/blank.gif' width='232' height='52' border='0'></a></div><div id='head_03'><div id='search_bar'><div id='nav'><a style='color:yellow;text-decoration:none;'>全站搜尋</a></div><div id='search_b1' align='left'><table><tr><td align='left'><input name='keyword' type='text' class='textbox' id='keyword' size='45' oninput="document.getElementById('auto-more').value='';autoComplete(this.form , 'keyword' , 'auto-complete-data' , event);" onkeydown='chkKeyDown(this.form , this , "auto-complete-data" , event);' onkeyUp="document.getElementById('auto-more').value='';autoComplete(this.form , 'keyword' , 'auto-complete-data' , event);" onblur="setTimeout(function(){hideDiv('auto-complete-data');} , 200);" onClick="this.value='';document.getElementById('oldKeyWord').value='';hideDiv('auto-complete-data');" placeholder='請輸入公司代號、簡稱，或報表關鍵字' autocomplete='off'></td><td><input type='button' name='rulesubmit' id='rulesubmit' value=' 搜尋 ' onclick="document.fh.action='/mops/web/autoAction';document.fh.submit();"></td></tr></table></div><div id='search_txt' class='search_b2' style='z-index:1;'><table border='0'><tr><td><div style='background-image: url(images/map01.jpg) ; height: 19px; width:32px;background-position:-161px 0px;'></div></td><td><a href='javascript:void(0);' onClick='document.fh.keyword.value="營收";goaction("營收" , "0");'>營收</a><a href='javascript:void(0);' onClick='document.fh.keyword.value="除權息";goaction("除權息" , "0");'>除權息</a><a href='javascript:void(0);' onClick='document.fh.keyword.value="電子書";goaction("電子書" , "0");'>電子書</a><a href='javascript:void(0);' onClick='document.fh.keyword.value="法說會";goaction("法說會" , "0");'>法說會</a><a href='javascript:void(0);' onClick='document.fh.keyword.value="庫藏股";goaction("庫藏股" , "0");'>庫藏股</a><a href='javascript:void(0);' onClick='document.fh.keyword.value="董監持股";goaction("董監持股" , "0");'>董監持股</a><a href='javascript:void(0);' onClick='document.fh.keyword.value="獨立董事";goaction("獨立董事" , "0");'>獨立董事</a><a href='javascript:void(0);' onClick='document.fh.keyword.value="董監酬金";goaction("董監酬金" , "0");'>董監酬金</a><a href='javascript:void(0);' onClick='document.fh.keyword.value="ETF";goaction("ETF" , "0");'>ETF</a><a href='javascript:void(0);' onClick='document.fh.keyword.value="TDR";goaction("TDR" , "0");'>TDR</a></td></tr></table></div></div></div><div id='head_04'><a href='http://emops.twse.com.tw/emops_all.htm'><img src='images/blank.gif' width='89' height='32' border='0' /></a><p><a href='/mops/web/index'><img src='images/blank.gif' width='89' height='32' border='0' /></a></div></div></form><input type='hidden' id='oldKeyWord'><div id='auto-complete-data'></div><div id='auto-complete-data2'></div><form name='fh2' style='margin:0;' action='' method='post' onsubmit='return false;'><input type='hidden' name='usually' id='usually' value = ''></form><script>window.onload=getMsg;    var MAR = document.querySelector("#marquee");     if(MAR){         var MARS = document.querySelectorAll("#marquee a");         for(var i=0;i<MARS.length;i++){             MARS[i].setAttribute("target","_blank");             MARS[i].setAttribute("style","margin-right:20px");         };         if(MARS.length<1){             MAR.parentNode.innerHTML = "<span style='color:#ff0;'>全站搜尋</span>";             MAR.setAttribute("scrollamount","0")         };     };</script><style>    #marquee,#marquee a{color: #ff0!important;}    #marquee a:hover{color: #ff0!important;text-decoration: none!important;}    #marquee a[href]{text-decoration: underline!important;}</style> 
+
+
+
+<div id="menu" class="clickMenu">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<script>
+			$(document).ready(function() {
+			
+				$('#list').clickMenu();
+				document.getElementById('list').style.display='block';
+			});
+		</script>
+		<tr>
+			<td id="menu1">
+				<ul id="list" style="display:none;">
+					<li class = "L00_Pop" id="mm0">常用報表
+					</li>
+					<li class = "L00_Pop" id="mm1">基本資料
+					</li>
+					<li class = "L00_Pop" id="mm2">彙總報表
+					</li>
+					<li class = "L00_Pop" id="mm3">股東會及股利
+					</li>
+					<li class = "L00_Pop" id="mm4">公司治理
+					</li>
+					<li class = "L00_Pop" id="mm5">財務報表
+					</li>
+					<li class = "L00_Pop" id="mm6">重大訊息與公告
+					</li>
+					<li class = "L00_Pop" id="mm7">營運概況
+					</li>
+					<li class = "L00_Pop" id="mm8">投資專區
+					</li>
+					<li class = "L00_Pop" id="mm9">認購（售）權證
+					</li>
+					<li class = "L00_Pop" id="mm10">債券
+					</li>
+					<li class = "L00_Pop" id="mm11">資產證券化
+					</li>
+
+				</ul>
+			</td>
+		</tr>
+	</table>
+</div>
+
+
+
+
+
+<div id="maincontent">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<td>
+				
+				<div id="content_left">
+					
+					
+					<div id="img_left">
+						<a href="https://mopsfin.twse.com.tw" target="_MOPSFIN">
+							
+							<img src="images/left_img01.gif" alt="財務比較e點通"></img>
+						</a>
+					</div>
+					
+					<div id="img_left">
+						<a href="/mops/web/t178sb01">
+							<img src="images/left_img02.gif" alt="券商對媒體轉載之澄清或說明專區"></img>
+						</a>
+					</div>
+					
+					<div id="img_left">
+						
+						
+
+						
+						
+						
+						
+						
+						
+						<a href="/mops/web/t05st10_ifrs">
+							<img src="images/left_img03.gif" alt="月營收資訊查詢"></img>
+						</a>
+						
+						
+					</div>
+					
+
+					<div id="img_left">
+						<a href="/mops/web/t203sb01">
+							
+							<img src="images/left_img04.gif" alt="XBRL資訊平台"></img>
+						</a>
+					</div>
+					
+
+					
+					<div id="img_left">
+						<a href="/mops/web/t132sb02" alt="外國企業第一上市櫃專區">
+							
+							<img src="images/left_img05.gif" alt="外國企業第一上市櫃專區"></img>
+						</a>
+					</div>
+					
+
+					<div id="img_left">
+						
+						
+						<a href="/mops/web/t05st01" alt="重大訊息查詢">
+							
+							<img src="images/left_img06.gif" alt="重大訊息查詢"></img>
+						</a>
+						
+					</div>
+					
+
+					<div id="img_left">
+						
+						
+						
+						<a href="/mops/web/t123sb00_q1" target="_MOPS_COURSE" alt="上市公司重大訊息說明記者會">
+							
+							<img src="images/left_img07.gif" alt="上市公司重大訊息說明記者會"></img>
+						</a>
+					</div>
+					
+				</div>
+				
+
+				<div id="content_center">
+					<div id="inner">
+						<div id="con">
+							
+							<div></div>
+							<ul id=tags1>
+								<LI  style="z-index:1"><a id="tagCon0" href="javascript:void(0)" onClick="index_form.stp.value='0';disply('tagContent0','index_form',true);selectTag('tagContent0','tagCon0');">公　告</a> </LI>
+								<LI  style="z-index:1"><a id="tagCon1" href="javascript:void(0)" onClick="index_form.stp.value='1';disply('tagContent1','index_form',true);selectTag('tagContent1','tagCon1')">即時重大訊息</a> </LI>
+								
+								<LI  style="z-index:1"><a id="tagCon2" href="javascript:void(0)" onClick="index_form.stp.value='2';disply('tagContent2','index_form',true);selectTag('tagContent2','tagCon2');">最新資訊</a> </LI>
+								<LI  style="z-index:1"><a id="tagCon3" href="javascript:void(0)" onClick="index_form.stp.value='3';disply('tagContent3','index_form',true);selectTag('tagContent3','tagCon3');">TDR即時重大訊息</a> </LI>
+							</ul>
+
+							<div id="tagContent">
+								<div class="tagContent" id="tagContent0"></div>
+								<div class="tagContent selectTag" id="tagContent1"></div>
+								<div class="tagContent" id="tagContent2"></div>
+								<div class="tagContent" id="tagContent3"></div>
+							</div>
+						</div>
+						<div>&nbsp;</div>
+						<div id="text" style="color:red;font-size:small;">本網站資料均由各公司輸入後由本系統對外公佈，資料如有錯誤、遺漏或虛偽不實，均由該公司負責。</div>
+					</div>
+				</div>
+
+				<div id="content_right">
+					<div id="right">
+						<div id="right_title01"></div>
+						<div id="right_data01">
+							<div id="right_data02" style="align:center">
+								<center><form method='post' onsubmit='return false;'><input type='hidden' name='firstin' value='true'><input type='hidden' name='year'><input type='hidden' name='month'><input type='hidden' name='step'><input type='hidden' name='TYPEK' value='all'><table class='noBorder' width='150' height='153' cellspacing='0' border='0' cellpadding='0' style='border-spacing:0px !important;'><tr class='tha'><th width='14%'><button class='button' style='background-color:transparent;border:0;cursor:pointer;color:#FFFFFF' onClick="step.value='1';year.value='110';month.value='09';action='/mops/web/ajax_index';ajax1(this.form,'right_data02');">＜</button></th><th width='14%'>110</th><th width='14%'>年</th><th width='14%'>&nbsp;</th><th width='14%'>10</th><th width='14%'>月</th><th width='14%'><button class='button' style='background-color:transparent;border:0;cursor:pointer;color:#FFFFFF' onClick="step.value='1';year.value='110';month.value='11';action='/mops/web/ajax_index';ajax1(this.form,'right_data02');">＞</button></th></tr><tr class='thb'><th width='14%'>日</th><th width='14%'>一</th><th width='14%'>二</th><th width='14%'>三</th><th width='14%'>四</th><th width='14%'>五</th><th width='14%'>六</th></tr><tr><td style='color:Silver'>26</td><td style='color:Silver'>27</td><td style='color:Silver'>28</td><td style='color:Silver'>29</td><td style='color:Silver'>30</td><td style='background:pink'><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">1</button></td><td><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">2</button></td></tr><tr><td><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">3</button></td><td style='background:pink'><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">4</button></td><td style='background:pink'><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">5</button></td><td style='background:pink'><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">6</button></td><td style='background:pink'><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">7</button></td><td style='background:pink'><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">8</button></td><td><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">9</button></td></tr><tr><td><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">10</button></td><td><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">11</button></td><td style='background:pink'><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">12</button></td><td style='background:pink'><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">13</button></td><td style='background:pink'><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">14</button></td><td style='background:pink'><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">15</button></td><td><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">16</button></td></tr><tr><td><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">17</button></td><td style='background:pink'><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">18</button></td><td style='background:pink'><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">19</button></td><td style='background:pink'><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">20</button></td><td style='background:pink'><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">21</button></td><td style='background:pink'><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">22</button></td><td><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">23</button></td></tr><tr><td><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">24</button></td><td style='background:pink'><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">25</button></td><td style='background:pink'><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">26</button></td><td style='background:pink'><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">27</button></td><td style='background:pink'><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">28</button></td><td style='background:pink'><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">29</button></td><td><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();">30</button></td></tr><tr><td><button class='button' style='background-color:transparent;border:0;cursor:pointer;' onClick="step.value='1';year.value='110';month.value='10';action='/mops/web/t108sb31new';submit();"><span style='color:red'>31</span></button></td><td style='color:Silver'>1</td><td style='color:Silver'>2</td><td style='color:Silver'>3</td><td style='color:Silver'>4</td><td style='color:Silver'>5</td><td style='color:Silver'>6</td></tr></table></form></center>
+							</div>
+						</div>
+					</div>
+
+					<div id="right_title02"></div>
+
+					
+					<div id="right_02linkbg_1">
+						<div class="text7">
+							<a href="https://mis.twse.com.tw/" target="_blank">基本市況報導</a>
+						</div>
+						
+						
+						<div class="text7" id="right_08"><a href="https://www.twse.com.tw/zh/company/applylisting" target="_blank">申請上市資訊</a></div>
+						<div class="text7" id="right_08"><a href="https://www.twse.com.tw/zh/page/about/links.html" target="_blank">國內外相關網站</a></div>
+					</div>
+
+					<div id="right_title03"></div>
+					<div id="right_03linkbg_1">
+						<div class="text7"><a href="/nas/rss/mopsrss201001.xml">重大訊息　<img src="/images/icon_xml.gif"></a></div>
+						<div class="text7" id="right_07"><a href="/nas/rss/mopsrss201002.xml">股東會　　<img src="/images/icon_xml.gif"></a></div>
+						<div class="text7" id="right_07"><a href="/nas/rss/mopsrss201003.xml">除權除息　<img src="/images/icon_xml.gif"></a></div>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id="footer">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<th>
+				<div class="text1" id="text1" align="center">
+					<a href='https://www.stockvote.com.tw/' target='_blank'>電子投票</a>│
+					<a href='http://www.sfb.gov.tw/Layout/main_ch/index.aspx?frame=5' target='_blank'>不繼續公開發行</a>│
+					<a href='/server-java/t39sb01' target='_blank'>市場公告</a>│
+					
+					
+					<a href='https://www.sfi.org.tw/cga/cga1' target='_blank'>公司治理評鑑</a>│
+					
+
+					
+					
+					
+					<a href='/mops/web/t146sb08'>網站地圖</a>│
+					<a href='/nas/MOPS_HandBook.doc' target='_MOPS_handbook'>網站使用說明</a>
+					<div class="text1" id="text1" align="center" height="80">
+					投資人服務中心(02)2792-8188 <u><a href='http://Suggestionbox.twse.com.tw' target='_blank'>聯絡我們</a></u> 
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href='https://www.twse.com.tw/zh/products/vendors' target='_blank'>臺灣證券交易所簽約資訊公司</a>亦提供相關資訊
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+				</div>
+			</th>
+		</tr>
+	</table>
+</div>
+
+<SCRIPT type="text/javascript">
+
+function selectTag(showContent,selfObj){
+	// 標籤
+	var tag = document.getElementById("tags1").getElementsByTagName("li");
+	var taglength = tag.length;
+	for(i=0; i<taglength; i++){
+	tag[i].className = "";
+	}
+	document.getElementById(""+selfObj).parentNode.className = "selectTag";
+	// 標籤內容
+	for(i=0; j=document.getElementById("tagContent"+i); i++){
+	j.style.display = "none";
+	}
+	document.getElementById(showContent).style.display = "block";
+	setChip($$system_name,"selfObj",selfObj);
+}
+
+var disply0 = "";
+var disply1 = "";
+var disply2 = "";
+var disply3 = "";
+var chkvar0 = true;
+var chkvar1 = true;
+var chkvar2 = true;
+var chkvar3 = true;
+function disply(id,formName,chk){
+	var fn = formName;
+	if (chkvar0 || chkvar1 || chkvar2){
+		if (id == "tagContent0"){
+			ajax1(document.index_form,""+id+"");
+			disply0 = document.getElementById("tagContent0").innerHTML;
+			chkvar0 = chk;
+		}
+		if (id == "tagContent1"){
+			ajax1(document.index_form,""+id+"");
+			disply1 = document.getElementById("tagContent1").innerHTML;
+			chkvar1 = chk;
+		}
+		if (id == "tagContent2"){
+			ajax1(document.index_form,""+id+"");
+			disply2 = document.getElementById("tagContent2").innerHTML;
+			chkvar2 = chk;
+		}
+		if (id == "tagContent3"){
+			ajax1(document.index_form,""+id+"");
+			disply3 = document.getElementById("tagContent3").innerHTML;
+			chkvar3 = chk;
+		}
+	}else{
+		if (id == "tagContent0"){
+			document.getElementById("tagContent0").innerHTML = disply0;
+		}
+		if (id == "tagContent1"){
+			document.getElementById("tagContent1").innerHTML = disply1;
+		}
+		if (id == "tagContent2"){
+			document.getElementById("tagContent2").innerHTML = disply2;
+		}
+		if (id == "tagContent3"){
+			document.getElementById("tagContent3").innerHTML = disply3;
+		}
+	}
+}
+
+function parammenu(){
+	getMsg();
+	showMsg();
+	//alert(document.fh.menusave.value);
+	/*
+	if (document.fh.menusave.value=="1"){
+		showIt11();
+		chantxt11();
+
+	}else if (document.fh.menusave.value=="2"){
+		showIt21();
+		chantxt21();
+
+	}else if (document.fh.menusave.value=="3"){
+		showIt31();
+		chantxt31();
+
+	}else if (document.fh.menusave.value=="4" ){
+		showIt41();
+		chantxt41();
+
+	}else if (document.fh.menusave.value=="5"){
+		showIt51();
+		chantxt51();
+
+	}else if (document.fh.menusave.value=="6"){
+		showIt61();
+		showIt2();
+
+	}else if (document.fh.menusave.value==""){
+		document.fh.menusave.value="6";
+
+		showIt61();
+		showIt2();
+
+	}
+	*/
+
+	$$system_name = "newmops2";
+
+	if (getChip($$system_name,"selfObj")==null){
+		selectTag("tagContent1","tagCon1");
+		document.index_form.stp.value="1";
+		//document.index_form.TYPEK.value="all";
+		disply("tagContent1","index_form",false);
+	}else{
+		v=getChip($$system_name,"selfObj");
+		//t=getChip($$system_name,"TYPEK");
+		if (v=="tagCon0"){
+			selectTag("tagContent0",v);
+			document.index_form.stp.value="0";
+			//document.index_form.TYPEK.value=t;
+			disply("tagContent0","index_form",false);
+		}
+		if (v=="tagCon1"){
+			selectTag("tagContent1",v);
+			document.index_form.stp.value="1";
+			//document.index_form.TYPEK.value=t;
+			disply("tagContent1","index_form",false);
+		}
+		if (v=="tagCon2"){
+			selectTag("tagContent2",v);
+			document.index_form.stp.value="2";
+			disply("tagContent2","index_form",false);
+		}
+		if (v=="tagCon3"){
+			selectTag("tagContent3",v);
+			document.index_form.stp.value="3";
+			disply("tagContent3","index_form",false);
+		}
+	}
+}
+
+window.onload=parammenu;
+</SCRIPT>
+
+<form name="index_form" id='index_form' action='/mops/web/ajax_index' method='post' onsubmit='return false;'>
+<input type="hidden" name="stp">
+</form>
+</center>
+
+</body>
+<script type="text/javascript">
+	function showMsg(){
+		var toDate = new Date();
+		var year="";
+		if (toDate.getYear() < 1999) {
+			year = 1900+toDate.getYear();
+		}else{
+			year = toDate.getYear();
+		}
+		var month = toDate.getMonth()+1;
+		if (month<10){
+			month = "0"+month;
+		}
+		var day = toDate.getDate();
+		if (day<10){
+			day = "0"+day;
+		}
+		var hour = toDate.getHours();
+		if (hour<10){
+			hour = "0"+hour;
+		}
+		var minute = toDate.getMinutes();
+		if (minute<10){
+			minute = "0"+minute;
+		}
+		var second = toDate.getSeconds();
+		if (second<10){
+			second = "0"+second;
+		}
+		var toDay = ""+year+""+month+""+day+""+hour+""+minute+""+second;
+		//if (toDay >= 20130205100000 && toDay <= 20130217080000){
+		if (toDay <= 20171022140000){
+			window.open ("/MOPS_Bulletin.html", "MOPSBeta", "height=300, width=750, toolbar=no, menubar=no, //scrollbars=no, resizable=no, location=no, status=no")
+		}
+	}
+
+</script>
+</html>
+
+</html>

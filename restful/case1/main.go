@@ -28,6 +28,13 @@ func main() {
 		log.Fatalln(err)
 	}
 	fmt.Println(resp)
+	// fmt.Println(resp["completed"])
+	myMap := resp.(map[string]interface{})
+	fmt.Println(myMap["title"])
+	// for key, value := range resp {
+	// 	fmt.Println(key, value)
+	// }
+	// fmt.Println(resp.(string))
 }
 
 var (

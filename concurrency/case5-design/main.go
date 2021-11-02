@@ -134,7 +134,7 @@ func (d *Dispatcher) dispatch() {
 }
 
 func initialize() {
-	maxWorkers := 1
+	maxWorkers := 5
 	maxQueue := 20
 	//初始化一個除錯者,並指定它可以操作的 工人個數
 	dispatch := NewDispatcher(maxWorkers)
@@ -146,7 +146,7 @@ func initialize() {
 func main() {
 	//初始化物件池
 	initialize()
-	for i := 0; i < 1; i++ {
+	for i := 0; i < 5; i++ {
 		p := Payload{
 			fmt.Sprintf("玩家-[%s]", strconv.Itoa(i)),
 		}
