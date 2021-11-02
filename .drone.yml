@@ -1,12 +1,15 @@
+---
 kind: pipeline
 name: default
 
 steps:
 - name: backend
   image: golang:1.13-alpine
-  enviroment:
+  environment:
     USERNAME:
       from_secret: username
-    commands:
-    - go build
-    - go test ./..
+  commands:
+  - go build -o drone-test
+  - go test
+  - rm -rf drone-test
+  - rm -rf src
