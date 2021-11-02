@@ -14,11 +14,6 @@ func main() {
 	// Instantiate default collector
 	c := colly.NewCollector(colly.AllowURLRevisit())
 
-	// Rotate two socks5 proxies
-	// rp, err := proxy.RoundRobinProxySwitcher("socks5://127.0.0.1:1337", "socks5://127.0.0.1:1338")
-	// curl -x "http://scraperapi:517b9015124ae652f84194455b192b63@proxy-server.scraperapi.com:8001" -k "http://httpbin.org/ip"
-	// curl "http://api.scraperapi.com?api_key=517b9015124ae652f84194455b192b63&url=http://httpbin.org/ip"
-
 	rp, err := proxy.RoundRobinProxySwitcher("http://127.0.0.1:8081", "http://127.0.0.1:8082")
 	if err != nil {
 		log.Fatal(err)
