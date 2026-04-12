@@ -64,6 +64,7 @@ func example1() {
 func example2() {
 	a := []int{10, 20, 30, 40, 50}
 
+	fmt.Println(a[2:3]) // 從 2 到 3 → [30]
 	fmt.Println(a[2:4]) // 從 2 到 4 → [30, 40]
 	fmt.Println(a[:3])  // 省略左邊 = 從 0 開始 → [10, 20, 30]
 	fmt.Println(a[2:])  // 省略右邊 = 到結尾   → [30, 40, 50]
