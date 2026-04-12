@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 	"time"
@@ -82,7 +82,7 @@ func (req *RequestHTTP) ExecuteAPI() (response interface{}, err error) {
 	}
 
 	defer resp.Body.Close()
-	respBodyBytes, err := ioutil.ReadAll(resp.Body)
+	respBodyBytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		log.Fatalln(err)
 		return nil, err

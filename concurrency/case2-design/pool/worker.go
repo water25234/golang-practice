@@ -1,4 +1,4 @@
-package main
+package pool
 
 type Worker struct {
 	JobQueue chan Job
@@ -7,6 +7,7 @@ type Worker struct {
 func NewWorker() Worker {
 	return Worker{JobQueue: make(chan Job)}
 }
+
 func (w Worker) Run(wq chan chan Job) {
 	go func() {
 		for {

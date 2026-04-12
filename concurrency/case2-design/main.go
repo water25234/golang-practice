@@ -1,10 +1,12 @@
-//https://studygolang.com/articles/17711
+// https://studygolang.com/articles/17711
 package main
 
 import (
 	"fmt"
 	"runtime"
 	"time"
+
+	"github.com/water25234/golang-practice/concurrency/case2-design/pool"
 )
 
 type Score struct {
@@ -21,9 +23,9 @@ func main() {
 	// debug.SetMaxThreads(num + 1000) //设置最大线程数
 	// 注册工作池，传入任务
 	// 参数1 worker并发个数
-	p := NewWorkerPool(num)
+	p := pool.NewWorkerPool(num)
 	p.Run()
-	datanum := 100 * 100 * 100 * 100
+	datanum := 100
 	go func() {
 		for i := 1; i <= datanum; i++ {
 			sc := &Score{Num: i}

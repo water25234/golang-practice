@@ -13,6 +13,11 @@ type Student struct {
 	Age  int32
 }
 
+type StudentNum2 struct {
+	Name string
+	Age  int32
+}
+
 type Teacher struct{}
 
 func (stu *Student) Speak(think string) (talk string) {
@@ -21,7 +26,7 @@ func (stu *Student) Speak(think string) (talk string) {
 	} else {
 		talk = stu.Name + "hi"
 	}
-	return
+	return talk
 }
 
 func (stu *Student) Move(feet string) (foot string) {
@@ -30,7 +35,7 @@ func (stu *Student) Move(feet string) (foot string) {
 	} else {
 		foot = "ok! left foot"
 	}
-	return
+	return foot
 }
 
 // New mean

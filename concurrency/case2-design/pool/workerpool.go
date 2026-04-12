@@ -1,4 +1,4 @@
-package main
+package pool
 
 import "fmt"
 
@@ -15,6 +15,7 @@ func NewWorkerPool(workerlen int) *WorkerPool {
 		WorkerQueue: make(chan chan Job, workerlen),
 	}
 }
+
 func (wp *WorkerPool) Run() {
 	fmt.Println("初始化worker")
 	//初始化worker

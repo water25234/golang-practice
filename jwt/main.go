@@ -198,7 +198,7 @@ func ExtractTokenMetadata(r *http.Request) (*AccessDetails, error) {
 		if !ok {
 			return nil, err
 		}
-		userId, err := strconv.ParseUint(fmt.Sprintf("%.f", claims["user_id"]), 10, 64)
+		userId, err := strconv.ParseInt(fmt.Sprintf("%.f", claims["user_id"]), 10, 64)
 		if err != nil {
 			return nil, err
 		}
@@ -215,7 +215,7 @@ func FetchAuth(authD *AccessDetails) (int64, error) {
 	if err != nil {
 		return 0, err
 	}
-	userID, _ := strconv.ParseUint(userid, 10, 64)
+	userID, _ := strconv.ParseInt(userid, 10, 64)
 	if authD.UserId != userID {
 		return 0, errors.New("unauthorized")
 	}
@@ -304,7 +304,7 @@ func Refresh(c *gin.Context) {
 			c.JSON(http.StatusUnprocessableEntity, err)
 			return
 		}
-		userId, err := strconv.ParseUint(fmt.Sprintf("%.f", claims["user_id"]), 10, 64)
+		userId, err := strconv.ParseInt(fmt.Sprintf("%.f", claims["user_id"]), 10, 64)
 		if err != nil {
 			c.JSON(http.StatusUnprocessableEntity, "Error occurred")
 			return

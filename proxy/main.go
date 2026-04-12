@@ -8,7 +8,6 @@ import (
 	"fmt"
 	"hash"
 	"io"
-	"io/ioutil"
 	"log"
 	"net"
 	"net/http"
@@ -67,7 +66,7 @@ type proxy struct {
 func handleError(err error, w http.ResponseWriter) {
 	fmt.Println(err.Error())
 	w.WriteHeader(500)
-	fmt.Fprintf(w, err.Error())
+	fmt.Fprintf(w, "%s", err.Error())
 }
 
 func (p *proxy) ServeHTTP(wr http.ResponseWriter, req *http.Request) {
@@ -121,7 +120,7 @@ func (p *proxy) ServeHTTP(wr http.ResponseWriter, req *http.Request) {
 	log.Println(req.RemoteAddr, " ", resp.Status)
 
 	if req.Method == http.MethodGet {
-		body, err := ioutil.ReadAll(resp.Body)
+		body, err := io.ReadAll(resp.Body)
 		if err != nil {
 			handleError(err, wr)
 			return
@@ -151,7 +150,7 @@ type Cache struct {
 }
 
 func CreateCache(path string) (*Cache, error) {
-	fileInfos, err := ioutil.ReadDir(path)
+	fileInfos, err := os.ReadDir(path)
 	if err != nil {
 		sigolo.Error("Cannot open cache folder '%s': %s", path, err)
 		sigolo.Info("Create cache folder '%s'", path)
@@ -211,7 +210,7 @@ func (c *Cache) get(key string) ([]byte, error) {
 	if content == nil {
 		sigolo.Debug("Cache has content for '%s' already loaded", hashValue)
 
-		content, err := ioutil.ReadFile(c.folder + hashValue)
+		content, err := os.ReadFile(c.folder + hashValue)
 		if err != nil {
 			sigolo.Error("Error reading cached file '%s': %s", hashValue, err)
 			return nil, err
@@ -228,7 +227,7 @@ func (c *Cache) get(key string) ([]byte, error) {
 func (c *Cache) put(key string, content []byte) error {
 	hashValue := calcHash(key)
 
-	err := ioutil.WriteFile(c.folder+hashValue, content, 0644)
+	err := os.WriteFile(c.folder+hashValue, content, 0644)
 
 	// Make sure, that the RAM-cache only holds values we were able to write.
 	// This is a decision to prevent a false impression of the cache: If the

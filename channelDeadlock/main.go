@@ -17,7 +17,7 @@ import (
 // 	也可以通過加鎖避免。
 
 func main() {
-	example7()
+	example9()
 }
 
 // channel is deadlock
@@ -62,7 +62,8 @@ func example5() {
 	ch <- 2
 	ch <- 3
 	// ch <- 4 deadlock, ch over then 3
-	for v := range ch {
+	close(ch)           // 解決方式1：關閉chan
+	for v := range ch { // or for i := 0; i < 3; i++ { fmt.Println(<-ch) } 解決方式2：讀取固定次數
 		fmt.Println(v)
 	}
 }
@@ -78,11 +79,11 @@ func example6() {
 
 	// range 一直讀取直到chan關閉，否則產生阻塞死鎖
 
-	go func() {
+	go func(ch chan int) {
 		for v := range ch {
 			fmt.Println(v)
 		}
-	}()
+	}(ch)
 
 	// 解決方式2：開啟子協程，主協程sleep等待
 	// time.Sleep(1e9)
@@ -114,9 +115,9 @@ func example8() {
 	ch := make(chan int, 1)
 	ch <- 0
 	for i := 0; i < 1000; i++ {
-		go func() {
+		go func(i int) {
 			ch <- <-ch + 1
-		}()
+		}(i)
 		//fmt.Println(1)
 	}
 
