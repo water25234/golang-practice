@@ -5,6 +5,18 @@ package main
 import "fmt"
 
 func main() {
+	example1()
+
+	fmt.Println("----- end -----")
+
+	example2()
+
+	fmt.Println("----- end -----")
+
+	example3()
+}
+
+func example1() {
 	// Example 1
 	names := []string{
 		"John",
@@ -47,6 +59,27 @@ func main() {
 	x := []int{1, 2}
 	foo(x)
 	fmt.Println(x)
+}
+
+func example2() {
+	a := []int{10, 20, 30, 40, 50}
+
+	fmt.Println(a[2:4]) // 從 2 到 4 → [30, 40]
+	fmt.Println(a[:3])  // 省略左邊 = 從 0 開始 → [10, 20, 30]
+	fmt.Println(a[2:])  // 省略右邊 = 到結尾   → [30, 40, 50]
+	fmt.Println(a[:])   // 全部省略 = 整個 slice → [10, 20, 30, 40, 50]
+	fmt.Println(a[2:2]) // 同一條線，夾不到東西 → []（空 slice）
+}
+
+func example3() {
+	a := []int{10, 20, 30, 40, 50}
+	b := a[1:3] // b → [20, 30]
+
+	fmt.Println(a, b) // [10 20 30 40 50] [20 30]
+
+	b[0] = 999
+	// a 變成 [10, 999, 30, 40, 50]，因為 b 改的是同一塊記憶體 (slice 出來的結果跟原本的 array 共用底層記憶體)
+	fmt.Println(a, b) // [10 999 30 40 50] [999 30]
 }
 
 func changeSliceItem(words []string) {
